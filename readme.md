@@ -3,6 +3,12 @@ Hoverbattles
 
 This is a toy project I pick up from time to time, socket.io + webgl + a healthy dose of shared server/client code = gaming fun, supposedly. I'm trying to do the quickest thing possible for most part, to get to a playable game with as little fuss as possible, this means spending days on little pieces of technology is a no-no (brute force terrain, lack of octrees etc :-))
 
+To run the server do,
+
+npm install
+mkdir cache
+node server.js
+
 Currently implemented:
 ------------
 

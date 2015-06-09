@@ -11,9 +11,10 @@ ServerCommunication = function(app, server){
   var self = this;
   this.server = server;
   this.app = app;
-  var listener = io.listen(server, {
-      'transports': [ 'websocket', 'flashsocket' ]
-  });
+  var listener = io.listen(server);
+//, {
+//      'transports': [ 'websocket', 'flashsocket' ]
+//  });
 
 //  listener.configure(function(){
 //      listener.set('log level', 1);
@@ -35,7 +36,7 @@ ServerCommunication = function(app, server){
 
   this.game = new ServerGameReceiver(this.app, this);
   this.dispatcher.addReceiver(this.game);
-  this.socket.on('connection', function(socket) { self.onConnection(socket); });
+  listener.on('connection', function(socket) { self.onConnection(socket); });
 };
 
 ServerCommunication.prototype.onConnection = function(socket) {
