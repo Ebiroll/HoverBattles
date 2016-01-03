@@ -11,21 +11,42 @@
              document.location = 'game.html'; 
             };
 
+            var redirectToBabylon = function() {
+             document.location = 'babylon.html'; 
+            };
+
             var showFeedback = function(feedback) {
               $('#user-feedback > p').text(feedback);
               $('#user-feedback').show();
             };          
-            $('#btnlogin').click(function() {
+           $('#btnlogin').click(function() {
               $.post('/services/login', {
                 username: $('#login-username').val()
               }, function(data) {
-                var result = JSON.parse(data);
-                if(result.success)
+                //var result = JSON.parse(data);
+                // result.success
+                if(true )
                   redirectToGame();
                 else
                   showFeedback(result.feedback);
               });
             });                  
+
+
+            $('#btnbabylon').click(function() {
+              $.post('/services/login', {
+                username: $('#login-username').val()
+              }, function(data) {
+                //var result = JSON.parse(data);
+                // result.success
+                if(true )
+                  redirectToBabylon();
+                else
+                  showFeedback(result.feedback);
+              });
+            });                  
+
+            
           });
       </script>
 <script type="text/javascript">
@@ -55,6 +76,7 @@
       <h2>Choose a display name</h2>
       <input type="text" name="login-username" id="login-username" /><div class="break"></div>
       <input type="button" name="btnlogin" id="btnlogin" value="Play"/><div class="break"></div>
+      <input type="button" name="btnlogin" id="btnbabylon" value="Babylon"/><div class="break"></div>
     </div>
     
     <div class="preview">
